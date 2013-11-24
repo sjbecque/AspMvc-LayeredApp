@@ -1,0 +1,38 @@
+﻿<#@ assembly name="$(ProjectDir)\bin\LayeredApp.WebUI.dll" #>
+
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core" #> <# //--> for System.Linq.Enumerable.Select(..) etc #>
+<#@ assembly name="System.Linq" #>
+<#@ import Namespace="System.Collections" #>
+<#@ import Namespace="System.Collections.Generic" #>
+<#@ import Namespace="System.Linq" #>
+<#@ import Namespace="System.Reflection" #>
+
+<#
+	//Note: set output extension to .txt for easier debugging;
+	//Adhoc-debug: WriteLine("//" + "SomeComment");
+	
+	var dict = LayeredApp.WebUI.General.T4.T4Sources.getController_to_Actions();
+#>
+
+
+namespace LayeredApp.WebUI.General.T4 
+{
+	public static class c //"c" = "controller"
+	{
+		<# foreach(var item in dict) { 
+		var foldername = item.Key;
+		#>
+		
+		public class <#= foldername #>
+		{
+			<#
+			List<string> viewNames = item.Value;
+			foreach(var viewname in viewNames) { #>public const string <#= viewname #> = "<#= viewname #>";
+			<# } #>
+		}
+
+		<# } #>	
+	}
+}

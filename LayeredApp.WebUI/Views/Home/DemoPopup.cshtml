@@ -1,0 +1,38 @@
+﻿
+<h5>DemoPopup</h5>
+
+@section Scripts
+{
+<script type="text/javascript" src="/Scripts/_TwitterBootstrap.js"></script>
+<script>
+
+	$(document).ready(function () {
+
+		$('button').click(function () {
+			showModal({
+				id: 'someModalID',
+				textHeader: 'textHeader',
+				textBody: 'textBody',
+				buttons: [
+				['textButton1', function () { console.log('Button1') } ],
+				['textButton2', function () { console.log('Button2') } ]
+			]
+			});
+		});
+
+	});
+
+</script>
+}
+
+
+
+
+<button>Show modal popup</button>
+
+
+
+@*
+Twitter Bootstrap suggereert overigens het volgende om de modal te tonen:
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+*@

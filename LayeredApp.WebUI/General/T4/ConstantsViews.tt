@@ -1,0 +1,37 @@
+﻿<#@ assembly name="$(ProjectDir)\bin\LayeredApp.WebUI.dll" #>
+
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core" #> <# //--> for System.Linq.Enumerable.Select(..) etc #>
+<#@ assembly name="System.Linq" #>
+<#@ import Namespace="System.Collections" #>
+<#@ import Namespace="System.Collections.Generic" #>
+<#@ import Namespace="System.Linq" #>
+<#@ import Namespace="System.Reflection" #>
+
+<#
+	var ViewFolder_to_cshtmls = LayeredApp.WebUI.General.T4.T4Sources.getViewFolder_to_cshtmls();
+		
+	//Adhoc-debug: WriteLine("//" + "SomeComment");
+#>
+
+
+namespace LayeredApp.WebUI.General.T4 
+{
+	public static class v //"v" = "view"
+	{
+		<# foreach(var item in ViewFolder_to_cshtmls) { 
+		var foldername = item.Key;
+		#>
+		
+		public class <#= foldername #>
+		{
+			<#
+			List<string> viewNames = item.Value;
+			foreach(var viewname in viewNames) { #>public const string <#= viewname #> = "<#= viewname #>";
+			<# } #>
+		}
+
+		<# } #>	
+	}
+}

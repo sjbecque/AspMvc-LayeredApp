@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        @*Relocate to .css if needed*@
+
+        div#header  { background-color:rgb(150,150,150); height:40px; }        
+        div#sidebar { background-color:rgb(240,240,250); height:600px; }
+        div#footer { background-color:rgb(200,200,200); height:40px; }        
+        
+        div#footer .navbar-inner {
+            background-color: #555555; /* fallback color */
+
+            /* Gradients for modern browsers */
+            background-image: -moz-linear-gradient(top, #ddd, #ccc);
+            background-image: -ms-linear-gradient(top, #ddd, #ccc);
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ddd), to(#ccc));
+            background-image: -webkit-linear-gradient(top, #ddd, #ccc);
+            background-image: -o-linear-gradient(top, #ddd, #ccc);
+            background-image: linear-gradient(top, #ddd, #ccc);
+            background-repeat: repeat-x;    
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); /* IE8-9 gradient filter */
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="header" class="navbar no-print">
+        <div class="navbar-inner">
+            <div class="container">            
+                <ul class="nav">
+
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Home</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div id="sidebar" class="span2">
+            [Sidebar]
+        </div>
+        <div class="span10">
+            @RenderBody()
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="navbar no-print">
+        <div class="navbar-inner">
+        [Footer]
+        </div>
+    </div>
+    
+
+    @*Deze scripts staan na de RenderBody zodat de pagina sneller wordt gerenderd;*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/General")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+
+
+
+
+@*
+Info on layout.cshtml: 
+http://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx
+http://weblogs.asp.net/scottgu/archive/2010/12/30/asp-net-mvc-3-layouts-and-sections-with-razor.aspx
+*@

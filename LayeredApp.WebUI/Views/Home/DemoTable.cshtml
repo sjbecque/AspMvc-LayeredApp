@@ -1,0 +1,36 @@
+﻿
+<h5>DemoTable</h5>
+
+@section Scripts
+{
+	<script type="text/javascript" src="/Scripts/_Table.js"> </script>
+	<script src="/Scripts/_General.js"></script>
+
+	<script type="text/javascript">
+
+		var thisTable = $.extend({}, CustomTableExt);
+		
+		//Hier eventueel gedrag overriden..;
+		
+		//Initialiseren;
+		thisTable.Init({
+			Url: '/Home/GetEntity01Table',
+			Parent: $('div.EntityTable'),
+			ColumnInfo: [
+				 { PropertyName: 'name', Header: 'name_'},
+				 { PropertyName: 'date1', Header: 'date1_' } 
+			],
+			MaxItemsOnPage: 4,
+			PageNumber: 2
+		});
+
+
+
+		//!!! thisTable.InitDemo(); werkt niet meer
+
+	</script>
+}
+
+<div class="EntityTable"></div>
+
+<div id='div1'></div>

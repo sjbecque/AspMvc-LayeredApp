@@ -1,0 +1,55 @@
+﻿@using System.Web.Mvc
+@using System.Linq.Expressions
+@using System.Web.Mvc.Html
+
+@helper GetHtmlDemo()
+{
+	//return ControlWithEditorHelper("SomeLabel", "<input type='text'></input>");  
+}
+
+@functions {
+
+	//Don't define extension methods here, which will result in errors;
+
+	//Aanroep: @Helpers.iets("")
+	public static HelperResult iets(string LabelText)
+	{
+		return GetControlGroup(LabelText);
+	}
+
+	//Aanroep: @Helpers.ControlWithEditor(Html, x=>x.property)
+	public static HelperResult ControlWithEditor<TModel, TValue>(HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
+	{
+		return ControlWithEditorHelper(
+			html.LabelFor(expression),
+			html.EditorFor(expression),
+			html.ValidationMessageFor(expression)
+		);
+	}
+}
+
+@helper GetControlGroup(string text)
+{
+	<div class="control-group">
+		@text
+		<div class="controls">			
+			@Helpers.GetSomeElement()
+		</div>
+	</div>    
+}
+
+@helper GetSomeElement()
+{
+	<p>text</p>
+}
+
+@helper ControlWithEditorHelper(MvcHtmlString label, MvcHtmlString editor, MvcHtmlString validationMessage)
+ {
+	<div class="control-group">
+		@label
+		<div class="controls">
+			@editor
+			@validationMessage
+		</div>
+	</div>
+}

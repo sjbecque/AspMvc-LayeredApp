@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/bootstrap/base")
+	
+	
+</head>
+<body>
+
+	@RenderBody()
+
+	@*The following scripts run after RenderBody, so that its rendering isn't delayed;*@
+	@Scripts.Render( "~/bundles/jquery" )	
+	@Scripts.Render("~/bundles/jqueryui")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)	
+</body>
+</html>
+
+
+
+@*
+Info on layout.cshtml: http://weblogs.asp.net/scottgu/archive/2010/12/30/asp-net-mvc-3-layouts-and-sections-with-razor.aspx
+*@

@@ -1,0 +1,16 @@
+/packages
+bin/
+obj/
+*.com
+*.class
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.cache
+*.suo
+*.csproj.user
+*.Publish.xml
+Thumbs.db
+UpgradeLog.XML
+_UpgradeReport_Files/
