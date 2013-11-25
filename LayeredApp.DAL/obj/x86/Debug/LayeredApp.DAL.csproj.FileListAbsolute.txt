@@ -1,0 +1,9 @@
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\bin\LayeredApp.DAL.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\bin\LayeredApp.DAL.pdb
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\bin\Base.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\bin\EntityFramework.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\bin\Base.pdb
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\bin\EntityFramework.xml
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\obj\x86\Debug\LayeredApp.DAL.csprojResolveAssemblyReference.cache
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\obj\x86\Debug\LayeredApp.DAL.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.DAL\obj\x86\Debug\LayeredApp.DAL.pdb

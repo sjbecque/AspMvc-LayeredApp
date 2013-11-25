@@ -1,0 +1,3 @@
+-To download the required NuGet packages while building the solution's projects in Visual Studio, 
+go to Tools > Options > Package Manager > check "Allow NuGet to download missing packages during build" .
+Then right-click on the solution and click "Enable NuGet Package Restore". Now the packages will be downloaden when the solution's projects are build.

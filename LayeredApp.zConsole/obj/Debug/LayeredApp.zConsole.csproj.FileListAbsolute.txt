@@ -1,0 +1,11 @@
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\LayeredApp.zTryoutConsole.exe.config
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\LayeredApp.zTryoutConsole.exe
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\LayeredApp.zTryoutConsole.pdb
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\Base.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\LayeredApp.DAL.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\EntityFramework.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\Base.pdb
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\LayeredApp.DAL.pdb
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\bin\Debug\EntityFramework.xml
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\obj\Debug\LayeredApp.zTryoutConsole.exe
+D:\9__BootstrapOplevering\AspMvcLayeredApp\LayeredApp.zConsole\obj\Debug\LayeredApp.zTryoutConsole.pdb

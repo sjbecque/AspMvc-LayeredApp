@@ -1,0 +1,4 @@
+D:\9__BootstrapOplevering\AspMvcLayeredApp\Base\bin\Debug\Base.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\Base\bin\Debug\Base.pdb
+D:\9__BootstrapOplevering\AspMvcLayeredApp\Base\obj\Debug\Base.dll
+D:\9__BootstrapOplevering\AspMvcLayeredApp\Base\obj\Debug\Base.pdb

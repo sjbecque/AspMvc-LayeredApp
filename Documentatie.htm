@@ -1,0 +1,112 @@
+
+<Xscript src="zSources/jquery-1.9.1.js"></Xscript><script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<Xscript src="zSources/jquery-ui-1.10.3.js"></Xscript><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+
+<style>
+div.TableOfContents { float:left; position:fixed; padding-right:1em; font-family:arial; font-size:60%; background-color:rgb(250,250,250) }
+div.TableOfContents li { cursor:pointer; }
+div#Content {margin-left:450px; width:600px}
+div#Content h4 { cursor:pointer; }
+div#Content h4:hover { background-color:rgb(210,220,220) }
+body {Xfont-family:arial; font-size:110%; background-color:rgb(240,240,240)}
+.Hide { display:none; }
+p.Show { display: block; }
+</style>
+
+<script>
+$(document).ready(function() {
+
+	//Table of contents;
+	$('#Content h4').each(function(index, elm){
+			
+		var itemToc = $('<li>' + $(elm).text() + '</li>'); 
+		
+		itemToc.click(function(event){		
+			$('body').animate({
+					 scrollTop: $(elm).offset().top
+				}, 40);		
+		});
+		
+		$('ul.TableOfContents').append(itemToc);	
+	});	
+	
+	//Hide content;
+	
+	$('div#Content').on('click', 'h4', function(){
+		$(this).nextUntil('h4').toggleClass('Hide');
+	});
+	
+	$('button#ToggleGlobalExpandAll').click(function(){ 
+		var x = $('p').toggleClass('Show');
+	});
+		
+});
+</script>
+
+<div class="TableOfContents">
+	<ul class='TableOfContents'></ul>
+	<p>(custom-documentatie-format v0.1)</p>
+	<button id='ToggleGlobalExpandAll' type="button" class="btn btn-primary btn-sm" a="Toggle global 'expand all' for searching">Toggle show</button>
+</div>
+
+<div id="Content" >	
+	
+	<h4>Inleiding</h4>
+	<p>
+	Bootstrap.Net is een boilerplate codebase voor een .Net webapplicatie. Het is vooral bedoeld om "basic plumbing" en veelvuldig voorkomende onderdelen, te huisvesten. De nadruk ligt op "simpel", "generiek", "defensief", en zo mogelijk "laagdrempelig"; een onderdeel hoort er alleen in thuis als het voldoet aan (veel van) de volgende kenmerken: compacte code, weinig dependencies, generiek, is veel behoefte aan, defensief (leidt tot minder fouten). Het meest complexe voorbeeld in de demo, dat qua complexiteit de bovengrens vormt, is de tabelfunctionaliteit. Via één javascript/jQuery-object en twee server-side methodes is een searchable, sortable, paginated en eenvoudig uitbreidbare tabel-widget. Vanwege de specifieke wensen die vaak rondom custom tabellen spelen, verdient deze soms de voorkeur boven libraries van het web.
+	</p>
+	<p>
+	De architectuur van de LayeredWebApp is (wellicht te) simpel gehouden, toegespitst op het uit de grond stampen van een product-prototype en zo snel mogelijk aan de essentie van het product te kunnen gaan werken, maar vormt dan ook weinig belemmering in het uitbreiden van de architectuur. Een volgende stap echter kan worden gezet door meer testability te introduceren, en een DI container.
+	</p>
+	<p>
+	De volgende toelichtingen bij de features zijn bedoeld om tijdens het gebruik van de Solution op terug te kunnen vallen voor extra uitleg, in tegenstelling tot diepgaande uitleg.
+	</p>
+	
+	<h4>Eenvoudige layered architectuur</h4>	
+	<p>
+	De architectuur is met opzet eenvoudig gehouden. Het voornaamste element is het "Data-Access-Layer" project, het enige project dat een afhankelijkheid heeft naar de ORM, in dit geval Entity Framework. Hierdoor kunnen andere projecten de data queryen, zoals projecten "WebUI" en "zConsole". De laatste is bedoeld om o.a. het DAL-project in isolement adhoc te kunnen queryen en testen.	
+	Het "Base" project is een plaats voor generieke code die in de meeste projecten van pas kan komen.
+	De Entity Framework is compatible met minstens versie 4.2 (de "DbContext"-versie).
+	</p>
+	
+	<h4>Services</h4>
+	<p>In DAL\Services staan de entity-services die de collecties van entities aanbieden aan de client-projecten. De services maken gebruiken van een object dat het Unit Of Work-patroon implementeerd, dat zij kunnen laten delen tussen repositories. [[MEER UITLEG NODIG]]</p>
+	
+	<h4>Repositories met 'diepte' tbv query-integriteit</h4>
+	<p>
+	IQueryable-objecten worden gedeeld door de uiteindelijke specifieke queries in de services, zodat dezelfde argumenten (zoals "IsDeleted = false") niet worden vergeten en data-integriteit wordt gewaarborgd.  
+	</p>
+	
+	<h4>Eenvoudige infrastructuur om start-data scenario's te beheren</h4>
+	<p>
+	In DAL\_ManageDb.cs kun je één of meerdere data-scenario's opnemen in code, om deze vervolgens eenvoudig te beheren en de database ernaar te laten 'restoren'. Dit is vaak makkelijker, zeker bij kleine of beginnende projecten, dan in bijvoorbeeld SQL-backups of -scripts belangrijke data-scenario's te bewaren en te beheren. Wanneer er bijvoorbeeld een extra entity aan het model wordt toegevoegd, is het vaak handig ook een aantal representatieve records aan te maken om te kunnen testen. In code kunnen enkele records hiervan, en eventueel verbanden tussen deze records en bestaande records, snel worden aangemaakt (plus: hulp van intellisense). Dit is makkelijker dan in na elke model wijziging, in een database editor met id's te moeten gaan rommelen, en vervolgens het resultaat weer backuppen om later weer ernaar te kunnen restoren.
+	</p>	
+	
+	<h4>Viewmodel baseclass demo</h4>
+	<p>
+	In WebUI\Home in region "Demo Viewmodel-baseclass" wordt een oplossing gedemonstreert hoe het gebruik van een (of meerdere) ViewModel-baseclass kan worden geimplementeerd. Hier is vaak behoefte aan omdat views vaak bepaalde algemene data moeten verwerken.
+	</p>
+	
+	<h4>Searchable, sortable, paginated customizable  tabelwidget en servercomponent</h4>
+	<p>
+	Eenvoudige searchable/sortable/paginated en uitbreidbare tabel via een generieke server-component en een compacte puur-javascript(/jQuery) widget. Zie WebUI\Home\DemoTable. [[Widget moet nog worden uitgebreid]]
+	</p>
+	
+	<h4>Url afhandeling</h4>
+	<p>	
+	In de project-properties van de WebUI is een virtueel pad opgenomen om goede url-afhandeling af te dwingen (voor in het geval de WebUI onder een virtual directory wordt gehost door IIS).	[[DEMO ULR-writing ontbreekt nog]]
+	</p>
+	
+	<h4>Navigatiebalk</h4>
+	<p>Demo/template voor een standaard navigatiebalk met Twitter Bootstrap styling.</p>
+	
+	<h4>Standaard javascript functies</h4>
+	<p>In WebUI\Scripts\_General.js zijn enkele handige javascript-functies opgenomen, o.a. ten behoeve van debuggen, jQuery-plugins en extending javascript-objecten.</p>
+	
+	<h4>Twitter Bootstrap light popup</h4>
+	<p>In Home\DemoPopup wordt een handige all-javascript Twitter Bootstrap popup-functie demonstreert.</p>
+
+	<h4>T4 generatie actions & views calls</h4>
+	<p>In Home\DemoTypeSafeCalls wordt T4-gegeneerde code gedemonstreert om m.b.v. het type-systeem actions en views aan te roepen. Lichtgewicht customizable alternatief voor het "T4MVC" project op het web.</p>
+	
+</div>
